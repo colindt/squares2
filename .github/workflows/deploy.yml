@@ -1,0 +1,33 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: 
+      - main
+      
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    concurrency:
+      group: deploy-${{github.ref}}
+      cancel-in-progress: true
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Configure Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.7.0
+      
+      - name: Build
+        run: |
+          npm ci
+          npm run build
+      
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4.4.0
+        with:
+          folder: build
