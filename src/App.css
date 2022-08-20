@@ -1,0 +1,7 @@
+.App {
+    text-align: center;
+}
+
+#root > .container > .row {
+    row-gap: 0.5rem;
+}

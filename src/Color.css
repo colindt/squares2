@@ -1,0 +1,36 @@
+.colorControl {
+    border: 1px solid #ccc;
+    border-radius: 0.25em;
+    background-color: white;
+    margin-bottom: 0.25em;
+    padding: 0.25em;
+}
+
+.colorEnableDelete {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.colorTextInput {
+    width: 5em !important;
+}
+.colorTextInput:invalid {
+    border-color: red;
+}
+
+.colorWeight {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.colorWeightLabel {
+    flex-grow: 0 !important;
+}
+
+.colorWeightPercent {
+    font-size: 0.875rem;
+    width: 3.5em !important;
+    text-align: right;
+}

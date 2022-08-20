@@ -1,0 +1,34 @@
+form {
+    background-color: white;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    box-shadow: 4px 3px 2px #888;
+    overflow: hidden scroll;
+    max-height: calc(100vh - 1em);
+}
+
+input, button {
+    pointer-events: auto !important;
+}
+
+hr {
+    margin: 0 !important;
+}
+
+.rerollButton .col, .rerollButton .col-auto {
+    padding: 0;
+}
+.rerollButton .col:first-child {
+    padding-right: 0.5em;
+}
+.rerollButton .col:last-child {
+    padding-left: 0.5em;
+}
+
+.diceIcon {
+    text-align: left;
+}
+
+.sizeInput {
+    width: 5em !important;
+}

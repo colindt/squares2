@@ -1,0 +1,48 @@
+.colorPicker {
+    display: flex;
+    align-items: center;
+}
+
+.colorSwatchPopoverPicker {
+    position: relative;
+}
+
+.colorSwatch {
+    width: 4em;
+    height: 1.5em;
+    border: 2px solid white;
+    box-shadow: inset 0 0 0 1px #ccc, 0 0 0 1px #ccc;
+    border-radius: 0.5em;
+    cursor: pointer;
+}
+
+.colorPopover {
+    position: absolute;
+    top: calc(100% + 2px);
+    left: 0;
+    z-index: 1;
+    border-radius: 0.5em;
+    box-shadow: 0px 3px 4px 2px #88888888;
+}
+
+.colorPopover .react-colorful {
+    width:  10em;
+    height: 10em;
+}
+.colorPopover .react-colorful__saturation-pointer {
+    width:  1em;
+    height: 1em;
+}
+.colorPopover .react-colorful__hue-pointer {
+    width: 0.5em;
+    border-radius: 0.5em;
+}
+
+.input-group {
+    width: auto !important;
+    margin-left: 0.5em;
+}
+
+.input-group-text {
+    padding: 0rem 0.5rem !important;
+}

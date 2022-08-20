@@ -1,0 +1,9 @@
+.colorList {
+    background-color: #ddd;
+    border-radius: 0.5em;
+    padding: 0.25em;
+}
+
+.addColorButton {
+    float: right;
+}

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   width="192"
+   height="192"
+   viewBox="0 0 50.799998 50.800001"
+   version="1.1"
+   id="svg1022">
+  <defs
+     id="defs1016" />
+  <metadata
+     id="metadata1019">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     transform="translate(0,-246.19999)">
+    <rect
+       style="fill:#ffffff;stroke:none;stroke-width:0;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect1632"
+       width="48.154167"
+       height="48.154167"
+       x="1.3229173"
+       y="247.5229"
+       rx="1.8520832"
+       ry="1.8520832" />
+    <rect
+       style="fill:#d6adbc;stroke:none;stroke-width:0;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect1585"
+       width="18.520834"
+       height="18.520834"
+       x="5.0270882"
+       y="251.22708" />
+    <rect
+       style="fill:#94ac9d;stroke:none;stroke-width:0;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect1585-5"
+       width="18.520834"
+       height="18.520834"
+       x="27.252098"
+       y="273.45209" />
+    <rect
+       style="fill:#a1c3e5;stroke:none;stroke-width:0;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect1585-5-7"
+       width="18.520834"
+       height="18.520834"
+       x="27.252098"
+       y="251.22708" />
+    <rect
+       style="fill:#a3b0d4;stroke:none;stroke-width:0;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect1585-5-7-2"
+       width="18.520834"
+       height="18.520834"
+       x="5.0270882"
+       y="273.45209" />
+  </g>
+</svg>
