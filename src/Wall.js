@@ -6,9 +6,6 @@ export default class Wall extends React.Component {
     constructor(props) {
         super(props);
         this.ref = React.createRef();
-        this.state = {
-            width : null,
-        }
     }
 
 
@@ -41,7 +38,10 @@ export default class Wall extends React.Component {
         const app = this.props.app;
         const appState = app.state;
         return (
-            <div id="wall" ref={this.ref}>
+            <div id="wall"
+                className={this.props.showLabels ? "labels" : ""}
+                ref={this.ref}
+            >
                 <div className="wallTable">
                     {appState.squares && appState.squares.map((row,i) => {
                         return (

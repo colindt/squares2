@@ -71,6 +71,7 @@ export default class App extends React.Component {
             squares : undefined, //automaticallly populated when the Wall component mounts
             width : 0,
             height : 0,
+            showLables : false,
         };
     }
 
@@ -116,6 +117,13 @@ export default class App extends React.Component {
         this.setState({
             wallSize : newWallSize,
             squares: squares,
+        });
+    }
+
+
+    handleToggleLabels() {
+        this.setState({
+            showLables : !this.state.showLables,
         });
     }
 
@@ -193,14 +201,8 @@ export default class App extends React.Component {
         const scale = Math.min(width / ww, height / wh);
 
         const borderWidth = scale * ss;
-        const cellWidth   = scale * sw;
-        const cellHeight  = scale * sh;
 
         const style = {
-            width : cellWidth,
-            minWidth : cellWidth,
-            height : cellHeight,
-            minHeight : cellHeight,
             borderTopWidth    : borderWidth / 2,
             borderRightWidth  : borderWidth / 2,
             borderBottomWidth : borderWidth / 2,
@@ -271,16 +273,18 @@ export default class App extends React.Component {
     colorSquares(oldSquares=this.state.squares, cellColors=this.state.cellColors) {
         return oldSquares.map((row, i) => {
             return row.map((cell, j) => {
-                let backgroundColor = "#bbbbbb";
+                const colorId = cellColors[i][j];
+
+                let backgroundColor = "var(--page-background-color)";
                 try {
-                    backgroundColor = this.state.colors[cellColors[i][j]].color;
+                    backgroundColor = `var(--color-${colorId})`;
                 } catch (dontCare) {}
 
                 return React.cloneElement(cell, {
                     style : {
                         ...cell.props.style,
-                        borderColor : this.state.colors[0].color,
                         backgroundColor : backgroundColor,
+                        "--color-id" : `"${colorId}"`,
                     }
                 })
             });
@@ -294,14 +298,34 @@ export default class App extends React.Component {
 
 
     render() {
+        const wallSize = this.state.wallSize;
+        const ww = wallSize["Wall Width"];
+        const wh = wallSize["Wall Height"];
+        const sw = wallSize["Square Width"];
+        const sh = wallSize["Square Height"];
+
+        const scale = Math.min(this.state.width / ww, this.state.height / wh);
+        const cellWidth   = scale * sw;
+        const cellHeight  = scale * sh;
+
+        const colorDefs = {};
+        for (let i in this.state.colors) {
+            colorDefs[`--color-${i}`] = this.state.colors[i].color;
+        }
+
         return (
-            <Container>
+            <Container style={{
+                ...colorDefs,
+                "--wall-background-color" : this.state.colors[0].color,
+                "--cell-width" : `${cellWidth}px`,
+                "--cell-height" : `${cellHeight}px`,
+            }}>
                 <Row>
                     <Col xs="auto">
                         <Controls app={this} />
                     </Col>
                     <Col>
-                        <Wall app={this} />
+                        <Wall showLabels={this.state.showLables} app={this} />
                     </Col>
                 </Row>
             </Container>

@@ -19,6 +19,12 @@ class Controls extends React.Component {
                     <Row><Col></Col><Col xs="auto">Reroll</Col><Col className="diceIcon">🎲</Col></Row>
                 </Button>
                 <SizeControls app={this.props.app} />
+                <Form.Switch
+                    label="Show square labels"
+                    id="show-labels"
+                    checked={app.state.showLabels}
+                    onChange={app.handleToggleLabels.bind(app)}
+                />
                 <Color background colorId={0} color={app.state.colors[0]} app={app} />
                 <ColorList colors={app.state.colors.slice(1)} app={app} />
             </Form>

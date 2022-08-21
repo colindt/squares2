@@ -17,4 +17,18 @@
     display: inline-block;
     border-style: solid;
     box-sizing: content-box;
+    width: var(--cell-width);
+    min-width: var(--cell-width);
+    height: var(--cell-height);
+    min-height: var(--cell-height);
+    border-color: var(--wall-background-color);
+}
+
+#wall.labels .wallCell::before {
+    content : var(--color-id);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-shadow: 1px 1px 0px white; /*todo: actual proper text contrast*/
 }
