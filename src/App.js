@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import './Wall.css';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -8,8 +7,9 @@ import Col from 'react-bootstrap/Col';
 
 import Controls from './Controls';
 import Wall from './Wall';
+import Square from './Square';
 
-import weightedRandom from './weightedRandom';
+import { weightedRandom, contrast } from './util';
 
 
 
@@ -78,7 +78,6 @@ export default class App extends React.Component {
 
     reroll(event) {
         event.preventDefault();
-        console.log(this.state);
         
         const newCellColors = this.generateRandomCellColors();
         const newSquares = this.colorSquares(this.state.squares, newCellColors);
@@ -104,6 +103,22 @@ export default class App extends React.Component {
             return Array(c).fill(null).map((_unused, j) => {
                 return weightedRandom(enabledColorIds, weights);
             });
+        });
+    }
+
+
+    handleSquareClick(row, column) {
+        const oldColor = this.state.cellColors[row][column];
+        const newColor = (oldColor + 1) % this.state.colors.length;
+
+        const newCellColors = this.state.cellColors.slice();
+        newCellColors[row][column] = newColor;
+        
+        const newSquares = this.colorSquares(this.state.squares, newCellColors);
+        
+        this.setState({
+            cellColors : newCellColors,
+            squares : newSquares,
         });
     }
 
@@ -252,11 +267,11 @@ export default class App extends React.Component {
                 }
 
                 return (
-                    <div
-                        className="wallCell" //this is why this file has to import Wall.css
+                    <Square
                         key={j}
                         style={cellStyle}
-                    ></div>
+                        onClick={() => this.handleSquareClick(i, j)}
+                    />
                 );
             });
         });
@@ -285,6 +300,7 @@ export default class App extends React.Component {
                         ...cell.props.style,
                         backgroundColor : backgroundColor,
                         "--color-id" : `"${colorId}"`,
+                        "--label-color" : contrast(this.state.colors[colorId].color),
                     }
                 })
             });

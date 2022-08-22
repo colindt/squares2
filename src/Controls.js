@@ -18,7 +18,9 @@ class Controls extends React.Component {
                 <Button onClick={app.reroll.bind(app)} className="rerollButton">
                     <Row><Col></Col><Col xs="auto">Reroll</Col><Col className="diceIcon">🎲</Col></Row>
                 </Button>
+                <hr />
                 <SizeControls app={this.props.app} />
+                <hr />
                 <Form.Switch
                     label="Show square labels"
                     id="show-labels"
