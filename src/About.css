@@ -1,0 +1,17 @@
+.aboutLink {
+    font-size: 80% !important;
+    padding: 0 !important;
+    text-align: left !important;
+}
+
+.aboutLink i {
+    margin-right: 0.25em;
+}
+
+.aboutBox img {
+    max-width: 100%;
+}
+
+.hr-p {
+    margin-bottom: 1rem !important;
+}

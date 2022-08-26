@@ -1,14 +1,23 @@
 .square {
     display: inline-block;
-    border-style: solid;
     box-sizing: content-box;
+    
     width: var(--cell-width);
     min-width: var(--cell-width);
     height: var(--cell-height);
     min-height: var(--cell-height);
+    
+    border-style: solid;
+
+    border-top-width: var(--cell-border);
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: var(--cell-border);
+    
     border-color: var(--wall-background-color);
     transition: background-color 0.2s linear,
                 border-color 0.2s linear;
+
     position: relative;
     cursor: pointer;
 }

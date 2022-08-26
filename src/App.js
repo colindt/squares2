@@ -71,6 +71,9 @@ export default class App extends React.Component {
             squares : undefined, //automaticallly populated when the Wall component mounts
             width : 0,
             height : 0,
+            cellWidth : 0,
+            cellHeight : 0,
+            cellBorder : 0,
             showLables : false,
         };
     }
@@ -123,16 +126,38 @@ export default class App extends React.Component {
     }
 
 
-    handleSizeChange(event) {
+    handleWallSizeChange(event) {
         let newWallSize = {...this.state.wallSize};
         newWallSize[event.target.name] = Number(event.target.value);
 
         const squares = this.generateSquares(newWallSize, this.state.width, this.state.height);
 
         this.setState({
+            ...this.calculateCellSize(newWallSize, this.state.width, this.state.height),
             wallSize : newWallSize,
             squares: squares,
         });
+    }
+
+
+    calculateCellSize(wallSize, width, height) {
+        const ww = wallSize["Wall Width"];
+        const wh = wallSize["Wall Height"];
+        const sw = wallSize["Square Width"];
+        const sh = wallSize["Square Height"];
+        const ss = wallSize["Square Spacing"];
+
+        const scale = Math.min(width / ww, height / wh);
+
+        const cellWidth  = Math.floor(scale * sw);
+        const cellHeight = Math.floor(scale * sh);
+        const cellBorder = Math.floor(scale * ss); 
+
+        return {
+            cellWidth  : cellWidth,
+            cellHeight : cellHeight,
+            cellBorder : cellBorder,
+        }
     }
 
 
@@ -215,18 +240,11 @@ export default class App extends React.Component {
 
         const scale = Math.min(width / ww, height / wh);
 
-        const borderWidth = scale * ss;
-
-        const style = {
-            borderTopWidth    : borderWidth / 2,
-            borderRightWidth  : borderWidth / 2,
-            borderBottomWidth : borderWidth / 2,
-            borderLeftWidth   : borderWidth / 2,
-        }
+        const borderWidth = Math.floor(scale * ss);
 
         const squares = Array(r).fill(null).map((_unused, i) => {
             return Array(c).fill(null).map((_unused, j) => {
-                const cellStyle = {...style};
+                const cellStyle = {};
 
                 if (i === 0) { //first row
                     cellStyle.borderTopWidth = borderWidth;
@@ -288,19 +306,24 @@ export default class App extends React.Component {
     colorSquares(oldSquares=this.state.squares, cellColors=this.state.cellColors) {
         return oldSquares.map((row, i) => {
             return row.map((cell, j) => {
-                const colorId = cellColors[i][j];
-
-                let backgroundColor = "var(--page-background-color)";
-                try {
+                let colorId, backgroundColor, labelColor;
+                if (cellColors.length > i && cellColors[i].length > j) { //if cell has a generated color
+                    colorId = cellColors[i][j];
                     backgroundColor = `var(--color-${colorId})`;
-                } catch (dontCare) {}
+                    labelColor = contrast(this.state.colors[colorId].color);
+                }
+                else {
+                    colorId = "?";
+                    backgroundColor = "var(--page-background-color)";
+                    labelColor = "black";
+                }
 
                 return React.cloneElement(cell, {
                     style : {
                         ...cell.props.style,
                         backgroundColor : backgroundColor,
                         "--color-id" : `"${colorId}"`,
-                        "--label-color" : contrast(this.state.colors[colorId].color),
+                        "--label-color" : labelColor,
                     }
                 })
             });
@@ -314,16 +337,6 @@ export default class App extends React.Component {
 
 
     render() {
-        const wallSize = this.state.wallSize;
-        const ww = wallSize["Wall Width"];
-        const wh = wallSize["Wall Height"];
-        const sw = wallSize["Square Width"];
-        const sh = wallSize["Square Height"];
-
-        const scale = Math.min(this.state.width / ww, this.state.height / wh);
-        const cellWidth   = scale * sw;
-        const cellHeight  = scale * sh;
-
         const colorDefs = {};
         for (let i in this.state.colors) {
             colorDefs[`--color-${i}`] = this.state.colors[i].color;
@@ -333,8 +346,9 @@ export default class App extends React.Component {
             <Container style={{
                 ...colorDefs,
                 "--wall-background-color" : this.state.colors[0].color,
-                "--cell-width" : `${cellWidth}px`,
-                "--cell-height" : `${cellHeight}px`,
+                "--cell-width"  : `${this.state.cellWidth}px`,
+                "--cell-height" : `${this.state.cellHeight}px`,
+                "--cell-border" : `${this.state.cellBorder}px`,
             }}>
                 <Row>
                     <Col xs="auto">

@@ -4,7 +4,7 @@ import "./Square.css";
 
 
 export default class Square extends React.Component {
-    render () {
+    render() {
         return (
             <div
                 className="square"

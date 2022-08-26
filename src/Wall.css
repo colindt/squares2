@@ -8,4 +8,5 @@
 
 .wallRow {
     line-height: 0;
+    height: calc(var(--cell-height) + var(--cell-border));
 }

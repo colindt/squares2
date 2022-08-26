@@ -28,8 +28,9 @@ export default class Color extends React.Component {
                     disabled={!this.props.allowDelete}
                     title="Delete color"
                     onClick={() => app.handleDeleteColor.bind(app)(this.props.colorId)}
+                    aria-label="Delete color"
                 >
-                    <i className="bi-trash" aria-label="Delete color"></i>
+                    <i className="bi-trash"></i>
                 </Button>
             );
         }

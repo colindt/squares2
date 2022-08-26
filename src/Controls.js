@@ -9,15 +9,24 @@ import { FormGroup } from 'react-bootstrap';
 
 import Color from "./Color";
 import ColorList from "./ColorList";
+import About from "./About";
 
 class Controls extends React.Component {
     render() {
         const app = this.props.app;
+        const diceNumber = 1 + Math.floor(Math.random() * 6);
         return (
             <Form className="d-grid gap-2">
                 <Button onClick={app.reroll.bind(app)} className="rerollButton">
-                    <Row><Col></Col><Col xs="auto">Reroll</Col><Col className="diceIcon">🎲</Col></Row>
+                    <Row>
+                        <Col></Col>
+                        <Col xs="auto">Reroll</Col>
+                        <Col className="diceIcon">
+                            <i className={`bi-dice-${diceNumber}`}></i>
+                        </Col>
+                    </Row>
                 </Button>
+                <About />
                 <hr />
                 <SizeControls app={this.props.app} />
                 <hr />
@@ -46,7 +55,7 @@ class SizeControls extends React.Component {
                     label={label}
                     key={label}
                     value={app.state.wallSize[label]}
-                    onChange={app.handleSizeChange.bind(app)}
+                    onChange={app.handleWallSizeChange.bind(app)}
                 />
             );
         });

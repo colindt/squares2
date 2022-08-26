@@ -15,7 +15,8 @@ export default class Wall extends React.Component {
         const wallSize = this.props.app.state.wallSize;
 
         this.props.app.setState({
-            width : width,
+            ...this.props.app.calculateCellSize(wallSize, width, height),
+            width  : width,
             height : height,
             squares :  this.props.app.generateSquares(wallSize, width, height),
         });

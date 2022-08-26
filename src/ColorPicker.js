@@ -71,6 +71,7 @@ export default class ColorPicker extends React.Component {
                         maxLength={7}
                         pattern="#?[0-9a-fA-F]{6}"
                         onChange={(event) => app.handleColorChange.bind(app)(event.target.value, event.target.validity.valid, this.props.colorId)}
+                        aria-label="hex color code"
                     />
                 </InputGroup>
             </div>
