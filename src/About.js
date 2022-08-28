@@ -45,7 +45,7 @@ export default class About extends React.Component {
                 <Modal.Body>
                     <p>
                         A few years ago my sister was planning to paint an accent wall with colored squares and asked me
-                        if I could make a program to randomly generate patters to see what they would look like. The
+                        if I could make a program to randomly generate patterns to see what they would look like. The
                         resulting web app that I made can be found here: <a href="https://colindt.net/squares">colindt.net/squares</a>
                     </p>
                     <p>The app was a success, and the wall turned out great, as seen here:</p>
@@ -68,7 +68,7 @@ export default class About extends React.Component {
                         entire wall. <strong>Square Width</strong> and <strong>Height</strong> determine the size of the
                         "squares". <strong>Square Spacing</strong> determines the size of the gaps between and around
                         the squares. The units are arbitrary, but the defaults are based on a 10'2" x 8'2" wall, with
-                        10" squares spaced 2" apart, which is close to the real walls shown above.
+                        10" squares spaced 2" apart, which is close to the real wall shown above.
                     </p>
                     <p>
                         The wall will automatically scale to fit the display area, which may seem unintuitive at first
