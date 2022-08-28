@@ -12,7 +12,7 @@ source code for the resulting web app that I made can be found [here](https://gi
 
 The app was a success, and the wall turned out great, as seen here:
 
-![public/photo.jpg](the real-life wall)
+![the real-life wall](public/photo.jpg)
 
 The original is pretty limited though. The colors and sizes of the wall and the squares are
 hard-coded based on what was already chosen. So I decided to remake it with more options and
